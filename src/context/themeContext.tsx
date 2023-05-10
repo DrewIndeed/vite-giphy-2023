@@ -6,7 +6,7 @@ import { themes } from "../styles/themes";
 export type ThemeInstance = Record<string, string>;
 
 // context to get current theme
-const ThemeContext = createContext<ThemeInstance | null>(null);
+const ThemeContext = createContext<ThemeInstance | undefined>(undefined);
 
 // context to select another theme
 const ThemeUpdateContext = createContext<Dispatch<

@@ -1,11 +1,14 @@
+import Header from "@components/Header";
 import { useTheme } from "@context/themeContext";
-import { AppWrapper } from "@styles/app";
+import { AppStyled } from "@styles/app";
 
 const App = () => {
   const theme = useTheme();
-  console.log(theme); // test if theme is provided globally
-
-  return <AppWrapper>GIF Showings</AppWrapper>;
+  return (
+    <AppStyled theme={theme}>
+      <Header />
+    </AppStyled>
+  );
 };
 
 export default App;

@@ -30,4 +30,8 @@ export const GlobalStyles = createGlobalStyle`
             border-radius: 1rem;
         }
     }
+
+    a, a:visited, a:hover, a:active {
+        color: inherit;
+    }
 `;
