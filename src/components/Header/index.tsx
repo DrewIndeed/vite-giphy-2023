@@ -37,7 +37,7 @@ function Header() {
             className="search-text-input"
             placeholder="Search for all GIFs ..."
           />
-          <button className="submit-btn">
+          <button className="submit-btn" aria-label="Buttomn with search icon">
             <MagnifyingGlassIcon width="2rem" height="2rem" />
           </button>
         </div>

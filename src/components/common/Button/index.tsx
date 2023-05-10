@@ -12,7 +12,7 @@ const Button = ({ name, icon, onClick }: Props) => {
   const theme = useTheme();
 
   return (
-    <ButtonStyled theme={theme} onClick={onClick}>
+    <ButtonStyled theme={theme} onClick={onClick} aria-label={name}>
       <span>
         {icon}
         {name}
