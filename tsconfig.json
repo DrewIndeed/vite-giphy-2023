@@ -18,10 +18,11 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
+      "@utils": ["utils/*"],
       "@hooks/*": ["hooks/*"],
       "@styles/*": ["styles/*"],
       "@assets/*": ["assets/*"],
-      "@utils": ["utils/index.ts"],
+      "@context/*": ["context/*"],
       "@constants/*": ["constants/*"],
       "@components/*": ["components/*"]
     }
