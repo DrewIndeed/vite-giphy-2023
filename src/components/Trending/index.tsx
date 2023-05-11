@@ -54,7 +54,7 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
         // formula to detect bottom found by myself
         if (sh - st - 2 === ch || sh - st - 1 === ch || sh - st === ch) {
           // update offset to avoid duplicate data and get new GIFs
-          offset += 30;
+          offset += 10;
           getMoreTrending(offset);
         }
       }, 500);

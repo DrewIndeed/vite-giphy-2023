@@ -57,6 +57,7 @@ export const ModalStyled = styled.div`
       .text-content {
         min-width: 10rem;
         padding: 0 0 0 2rem;
+
         h3 {
           font-size: 1.6rem;
           text-align: center;
@@ -77,7 +78,7 @@ export const ModalStyled = styled.div`
 
         h4 {
           color: ${(props) => props.theme.colorYellow};
-          font-size: 1.6rem;
+          font-size: 1.3rem;
           span {
             text-transform: uppercase;
           }
@@ -109,7 +110,7 @@ export const ModalStyled = styled.div`
             align-items: center;
 
             span {
-              margin-left: 1rem;
+              margin-left: 0.5rem;
             }
           }
         }

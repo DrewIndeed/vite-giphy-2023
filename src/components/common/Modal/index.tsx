@@ -53,18 +53,16 @@ const Modal = (props: any) => {
             <div className="text-content">
               {/* main title */}
               <h3>{title}</h3>
+
               {/* rating as reqiured */}
               <h4>
                 <span>{rating}</span> RATING
               </h4>
+
               {/* share button -> lead to GIPHY */}
               <div className="share-item share">
                 <a href={link} target={"_blank"}>
-                  <PaperAirplaneIcon
-                    width="2.5rem"
-                    height="2.5rem"
-                    color="#fff"
-                  />
+                  <PaperAirplaneIcon width="2rem" height="2rem" color="#fff" />
                   <span>Share</span>
                 </a>
               </div>
@@ -72,18 +70,14 @@ const Modal = (props: any) => {
               {/* Code button -> lead to site from embeded link */}
               <div className="share-item embed">
                 <a href={embed_url} target="_blank">
-                  <CodeBracketIcon
-                    width="2.5rem"
-                    height="2.5rem"
-                    color="#fff"
-                  />
+                  <CodeBracketIcon width="2rem" height="2rem" color="#fff" />
                   <span>Embed</span>
                 </a>
               </div>
               {/* GIPHY button -> lead to GIPHY */}
               <div className="share-item giffy">
                 <a href={link} target="_blank">
-                  <GifIcon width="2.5rem" height="2.5rem" color="#fff" />
+                  <GifIcon width="2rem" height="2.5rem" color="#fff" />
                   <span>GIPHY</span>
                 </a>
               </div>
