@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const TrendingStyled = styled.article`
+  position: relative;
   padding: 2rem;
   background-color: ${(props) => props.theme.colorBg2};
   border-radius: 1rem;
@@ -20,7 +21,7 @@ export const TrendingStyled = styled.article`
   .empty-msg {
     text-align: center;
     width: 100%;
-    height: 90%;
+    height: 80%;
     color: #fff;
     font-size: 1.5em;
     font-style: italic;

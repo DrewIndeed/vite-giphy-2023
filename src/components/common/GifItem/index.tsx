@@ -12,7 +12,6 @@ import { GifItemStyled } from "./style";
 const GifItem = (props: any) => {
   const {
     id,
-    order,
     title,
     isRandom,
     url: link,

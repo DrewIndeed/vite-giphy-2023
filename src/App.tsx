@@ -17,7 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "react-tooltip/dist/react-tooltip.css";
 
 const App = () => {
-  const { getRandom } = useData();
+  const { getRandom, getTrending } = useData();
   const theme = useTheme();
 
   // states
@@ -26,12 +26,12 @@ const App = () => {
 
   // map to choose what content to render on the main screen
   const categoriesContentMap: Record<string, ReactNode> = {
-    trending: <Trending isSearching={false} isFavorite={false} />,
     random: <Random />,
+    favorites: <Trending isSearching={false} isFavorite />,
+    trending: <Trending isSearching={false} isFavorite={false} />,
     searching: (
       <Trending isSearching isFavorite={false} currentQuery={currentQuery} />
     ),
-    favorites: <Trending isSearching={false} isFavorite />,
   };
 
   return (
@@ -51,7 +51,12 @@ const App = () => {
           name="Trending GIFs"
           icon={<ArrowTrendingUpIcon width="1.5rem" height="1.5rem" />}
           isChosen={renderedCategory === "trending"}
-          onClick={() => setRenderedCategory("trending")}
+          onClick={() => {
+            setRenderedCategory("trending");
+            getTrending();
+            const scrollDemo = document.querySelector("#gallery-scroll");
+            scrollDemo?.scrollTo({ top: 0, behavior: "smooth" });
+          }}
         />
         <Button
           name="Random GIF"

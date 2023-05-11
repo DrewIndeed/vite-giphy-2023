@@ -1,6 +1,7 @@
 import {
   ADD_TO_FAVORITES,
   GET_FAVORITES,
+  GET_MORE_TRENDING,
   GET_RANDOM,
   GET_SEARCH,
   GET_TRENDING,
@@ -48,13 +49,34 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     try {
       // fetch using axios
       const res = await axios.get(
-        `${baseUrl}/trending?api_key=${apiKey}&limit=30`
+        `${baseUrl}/trending?api_key=${apiKey}&limit=30&offset=0`
       );
 
       // save data into context
       dispatch({ type: GET_TRENDING, payload: res.data.data });
     } catch (error) {
       let errorMessage = "Failed to get trending GIFs";
+      if (error instanceof AxiosError) errorMessage = error.message;
+      console.log(errorMessage);
+    }
+  };
+
+  // [GET]: load more trending GIFs
+  const getMoreTrending = async (newOffset: number) => {
+    // loading is true
+    dispatch({ type: LOADING });
+
+    // start fetching
+    try {
+      // fetch using axios
+      const res = await axios.get(
+        `${baseUrl}/trending?api_key=${apiKey}&limit=30&offset=${newOffset}`
+      );
+
+      // save data into context
+      dispatch({ type: GET_MORE_TRENDING, payload: res.data.data });
+    } catch (error) {
+      let errorMessage = "Failed to get more trending GIFs";
       if (error instanceof AxiosError) errorMessage = error.message;
       console.log(errorMessage);
     }
@@ -173,9 +195,11 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
       value={{
         ...state,
         getRandom,
+        getTrending,
         getSearchResults,
         saveToFavorites,
         removeFromFavorites,
+        getMoreTrending,
       }}
     >
       {children}

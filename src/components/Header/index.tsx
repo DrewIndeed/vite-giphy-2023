@@ -19,10 +19,25 @@ const Header = ({ setRenderedCategory, setCurrentQuery }: Props) => {
   // handle submit search query
   const handleSubmit = (e: any) => {
     e.preventDefault();
+
+    // fetch search results
     getSearchResults(query);
-    setCurrentQuery(query); // to show query as "Search Results of 'something'"
+
+    // to show query as "Search Results of 'something'"
+    setCurrentQuery(query);
+
+    // set main screen to searching
     setRenderedCategory("searching");
+
+    // empty search bar content
     setQuery("");
+
+    // scroll to top of the container
+    const scrollDemo = document.querySelector("#gallery-scroll");
+    scrollDemo?.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
 
     // if query is empty wehen submit, show Trending GIFs
     if (query === "") setRenderedCategory("trending");

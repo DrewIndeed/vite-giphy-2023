@@ -1,6 +1,7 @@
 import {
   ADD_TO_FAVORITES,
   GET_FAVORITES,
+  GET_MORE_TRENDING,
   GET_RANDOM,
   GET_SEARCH,
   GET_TRENDING,
@@ -17,6 +18,13 @@ export const globalReducer = (state: any, action: any) => {
         ...state,
         loading: false,
         trending: action.payload,
+      };
+
+    case GET_MORE_TRENDING:
+      return {
+        ...state,
+        loading: false,
+        trending: [...state.trending, ...action.payload],
       };
 
     case GET_RANDOM:

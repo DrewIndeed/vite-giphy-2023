@@ -7,6 +7,8 @@ import {
   HeartIcon,
   ListBulletIcon,
 } from "@heroicons/react/24/solid";
+import throttle from "lodash.throttle";
+import { useEffect } from "react";
 import Masonry from "react-masonry-css";
 import { TrendingStyled } from "./style";
 
@@ -15,9 +17,12 @@ type Props = {
   isFavorite?: boolean;
   currentQuery?: string;
 };
+
 const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
   // data from context
-  const { trending, loading, searchResults, favorites } = useData();
+  let offset = 0;
+  const { trending, loading, searchResults, favorites, getMoreTrending } =
+    useData();
   const theme = useTheme();
 
   // break points for the mansory or mosaic layout
@@ -29,13 +34,41 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
   };
 
   const targetDataList = () => {
-    if (isSearching) return searchResults;
-    if (isFavorite) return favorites;
+    if (isSearching && !isFavorite) return searchResults;
+    if (isFavorite && !isSearching) return favorites;
     return trending;
   };
 
+  useEffect(() => {
+    // if it is Trending List
+    if (!isFavorite && !isSearching) {
+      // target gallery from DOM
+      const scrollDemo = document.querySelector("#gallery-scroll");
+
+      // detect bottom of scrolling and fetch more Trending GIFs
+      const handleScroll = throttle(() => {
+        const sh = scrollDemo?.scrollHeight as number;
+        const st = Math.floor(scrollDemo?.scrollTop as number);
+        const ch = scrollDemo?.clientHeight;
+
+        // formula to detect bottom found by myself
+        if (sh - st - 2 === ch || sh - st - 1 === ch || sh - st === ch) {
+          // update offset to avoid duplicate data and get new GIFs
+          offset += 30;
+          getMoreTrending(offset);
+        }
+      }, 500);
+
+      // add scroll event listener on GIFs gallery
+      scrollDemo?.addEventListener("scroll", handleScroll);
+
+      // clean up
+      return () => scrollDemo?.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
+
   return (
-    <TrendingStyled theme={theme}>
+    <TrendingStyled theme={theme} id="gallery-scroll">
       {/* main display title at the top left corner */}
       <h2>
         {!isSearching && !isFavorite && (
@@ -47,7 +80,7 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
         {isSearching && (
           <>
             <ListBulletIcon width="2rem" height="2rem" />
-            Search Results for "{currentQuery}"
+            Search Results for "{currentQuery}" (30)
           </>
         )}
         {isFavorite && (
@@ -60,7 +93,14 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
 
       {/* loader of the current content */}
       {loading && (
-        <div style={{ marginTop: "15%" }}>
+        <div
+          style={{
+            position: "absolute",
+            zIndex: "20",
+            top: "1rem",
+            right: "1rem",
+          }}
+        >
           <Loader />
         </div>
       )}

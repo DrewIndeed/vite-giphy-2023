@@ -2,8 +2,8 @@ import GiftItem from "@components/common/GifItem";
 import Loader from "@components/common/Loader";
 import { useData } from "@context/dataContext";
 import { useTheme } from "@context/themeContext";
-import { RandomStyled } from "./style";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
+import { RandomStyled } from "./style";
 
 const Random = () => {
   const { random: randomGifData, loading } = useData();

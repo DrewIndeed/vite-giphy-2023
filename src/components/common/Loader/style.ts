@@ -7,16 +7,16 @@ export const LoaderStyled = styled.div`
   .lds-ring {
     display: inline-block;
     position: relative;
-    width: 5rem;
-    height: 5rem;
+    width: 4.5rem;
+    height: 4.5rem;
   }
 
   .lds-ring div {
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
     margin: 0.5rem;
     border: 0.25rem solid #00e6cc;
     border-radius: 50%;

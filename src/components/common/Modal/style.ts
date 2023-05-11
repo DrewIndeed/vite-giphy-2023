@@ -37,8 +37,9 @@ export const ModalStyled = styled.div`
     .modal-content {
       padding: 2rem;
       display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 2rem;
+
       @media screen and (max-width: 1400px) {
         flex-direction: column;
         align-items: center;
@@ -54,7 +55,8 @@ export const ModalStyled = styled.div`
       }
 
       .text-content {
-        padding: 0 2rem;
+        min-width: 10rem;
+        padding: 0 0 0 2rem;
         h3 {
           font-size: 1.6rem;
           text-align: center;
