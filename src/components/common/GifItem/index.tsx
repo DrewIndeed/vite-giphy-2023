@@ -1,13 +1,15 @@
 import { useTheme } from "@context/themeContext";
 import { HeartIcon } from "@heroicons/react/24/outline";
+import { HeartIcon as HeartIconSolid } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Tooltip } from "react-tooltip";
 import Loader from "../Loader";
 import Modal from "../Modal";
-import { GiftItemStyled } from "./style";
+import { GifItemStyled } from "./style";
+import { useData } from "@context/dataContext";
 
-const GiftItem = (props: any) => {
+const GifItem = (props: any) => {
   const {
     id,
     order,
@@ -19,32 +21,58 @@ const GiftItem = (props: any) => {
     images: {
       original: { url },
     },
+    isFavorite,
   } = props;
+  const { saveToFavorites, removeFromFavorites } = useData();
   const theme = useTheme();
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOn, setModalOn] = useState(false);
 
   return (
-    <GiftItemStyled theme={theme} id={id}>
+    <GifItemStyled theme={theme} id={id}>
       {/* tooltip to inform users to double click */}
       {!isLoading && <Tooltip id="gif" />}
       {isModalOn && <Modal setModalOn={setModalOn} {...props} />}
       <div
         className="gif"
         data-tooltip-id="gif"
-        data-tooltip-className="gif"
         data-tooltip-content="Double Click to Show More"
         data-tooltip-place="bottom"
         onDoubleClick={() => setModalOn(true)}
       >
         {/* button to add to Favorties */}
         {!isLoading && (
-          <div className="love">
-            <HeartIcon
-              width="2.5rem"
-              height="2.5rem"
-              color={theme?.colorGreen}
-            />
+          <div
+            className="love"
+            onClick={() => {
+              const targetDataForProcessing = {
+                id,
+                title,
+                url: link,
+                images: {
+                  original: { url },
+                },
+              };
+
+              // if the current screen is the Favorite GIFs
+              // then, when icon is clicked, remove it from the favorites list
+              if (isFavorite) removeFromFavorites(targetDataForProcessing);
+              else saveToFavorites(targetDataForProcessing);
+            }}
+          >
+            {isFavorite ? (
+              <HeartIcon
+                width="2.5rem"
+                height="2.5rem"
+                color={theme?.colorGreen}
+              />
+            ) : (
+              <HeartIconSolid
+                width="2.5rem"
+                height="2.5rem"
+                color={theme?.colorGreen}
+              />
+            )}
           </div>
         )}
 
@@ -81,8 +109,8 @@ const GiftItem = (props: any) => {
           visibleByDefault={order >= 0 && order <= 7}
         />
       </div>
-    </GiftItemStyled>
+    </GifItemStyled>
   );
 };
 
-export default GiftItem;
+export default GifItem;

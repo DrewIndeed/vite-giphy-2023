@@ -24,9 +24,12 @@ const App = () => {
 
   // map to choose what content to render on the main screen
   const categoriesContentMap: Record<string, ReactNode> = {
-    trending: <Trending />,
+    trending: <Trending isSearching={false} isFavorite={false} />,
     random: <Random />,
-    searching: <Trending isSearching currentQuery={currentQuery} />,
+    searching: (
+      <Trending isSearching isFavorite={false} currentQuery={currentQuery} />
+    ),
+    favorites: <Trending isSearching={false} isFavorite />,
   };
 
   return (
@@ -37,9 +40,9 @@ const App = () => {
       {/* list of buttons */}
       <div className="category-btns">
         <Button
-          name="Liked GIFs"
+          name="Favorite GIFs"
           icon={<HeartIcon width="1.5rem" height="1.5rem" />}
-          onClick={() => setRenderedCategory("liked")}
+          onClick={() => setRenderedCategory("favorites")}
         />
         <Button
           name="Trending GIFs"

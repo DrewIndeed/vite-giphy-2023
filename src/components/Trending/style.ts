@@ -16,6 +16,19 @@ export const TrendingStyled = styled.article`
     gap: 1rem;
   }
 
+  .empty-msg {
+    text-align: center;
+    width: 100%;
+    height: 90%;
+    color: #fff;
+    font-size: 1.5em;
+    font-style: italic;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .my-masonry-grid {
     display: -webkit-box; /* Not needed if autoprefixing */
     display: -ms-flexbox; /* Not needed if autoprefixing */

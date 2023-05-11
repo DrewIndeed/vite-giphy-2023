@@ -1,4 +1,11 @@
-import { GET_RANDOM, GET_SEARCH, GET_TRENDING, LOADING } from "@state/action";
+import {
+  ADD_TO_FAVORITES,
+  GET_FAVORITES,
+  GET_RANDOM,
+  GET_SEARCH,
+  GET_TRENDING,
+  LOADING,
+} from "@state/action";
 import { globalReducer } from "@state/reducer";
 import axios, { AxiosError } from "axios";
 import {
@@ -98,10 +105,62 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  // [LOCAL STORAGE]: check for existing data and add new item to favorites
+  const saveToFavorites = (gifData: any) => {
+    // access and find favorites in local storage
+    const storedItems =
+      JSON.parse(window.localStorage.getItem("myFavoriteGifs") as string) || [];
+
+    // find in the list in local storage for the same data uisng id
+    const existingItem = storedItems.find(
+      (item: any) => item.id === gifData.id
+    );
+
+    // if there is  data with the same id
+    // then, notify and stop adding process
+    if (existingItem) {
+      alert("Opps! Already Added!"); // notify here
+      return;
+    }
+
+    // concat new data to existing list
+    const items = [...storedItems, gifData];
+
+    // save to local storage
+    window.localStorage.setItem("myFavoriteGifs", JSON.stringify(items));
+    dispatch({ type: ADD_TO_FAVORITES, payload: gifData });
+    alert("Yayy! Added to Favorites!!"); // notify here
+  };
+
+  // [LOCAL STORAGE]: check and get stored favorite items
+  const getFromLocalStorage = () => {
+    // access and find favorites in local storage
+    const storedItems =
+      JSON.parse(window.localStorage.getItem("myFavoriteGifs") as string) || [];
+    dispatch({ type: GET_FAVORITES, payload: storedItems });
+  };
+
+  // [LOCAL STORAGE]: check and delete data with the same id as delete target
+  const removeFromFavorites = (gifData: any) => {
+    // access and find favorites in local storage
+    const storedItems =
+      JSON.parse(window.localStorage.getItem("myFavoriteGifs") as string) || [];
+
+    // filter out items whose id is different from current delete target
+    const items = storedItems.filter((item: any) => item.id !== gifData.id);
+
+    // update favorites list in local storage
+    window.localStorage.setItem("myFavoriteGifs", JSON.stringify(items));
+
+    // get favorites list again for updated data
+    getFromLocalStorage();
+  };
+
   // initial data populating
   useEffect(() => {
     getTrending();
     getRandom();
+    getFromLocalStorage();
   }, []);
 
   return (
@@ -110,6 +169,8 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
         ...state,
         getRandom,
         getSearchResults,
+        saveToFavorites,
+        removeFromFavorites,
       }}
     >
       {children}

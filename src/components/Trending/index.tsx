@@ -2,16 +2,21 @@ import GifItem from "@components/common/GifItem";
 import Loader from "@components/common/Loader";
 import { useData } from "@context/dataContext";
 import { useTheme } from "@context/themeContext";
-import { ArrowTrendingUpIcon, ListBulletIcon } from "@heroicons/react/24/solid";
+import {
+  ArrowTrendingUpIcon,
+  HeartIcon,
+  ListBulletIcon,
+} from "@heroicons/react/24/solid";
 import Masonry from "react-masonry-css";
 import { TrendingStyled } from "./style";
 
 type Props = {
   isSearching?: boolean;
+  isFavorite?: boolean;
   currentQuery?: string;
 };
-const Trending = ({ isSearching, currentQuery }: Props) => {
-  const { trending, loading, searchResults } = useData();
+const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
+  const { trending, loading, searchResults, favorites } = useData();
   const theme = useTheme();
 
   // break points for the mansory or mosaic layout
@@ -22,11 +27,17 @@ const Trending = ({ isSearching, currentQuery }: Props) => {
     500: 1,
   };
 
+  const targetDataList = () => {
+    if (isSearching) return searchResults;
+    if (isFavorite) return favorites;
+    return trending;
+  };
+
   return (
     <TrendingStyled theme={theme}>
       {/* main display title at the top left corner */}
       <h2>
-        {!isSearching && (
+        {!isSearching && !isFavorite && (
           <>
             <ArrowTrendingUpIcon width="2rem" height="2rem" />
             Trending GIFs
@@ -36,6 +47,12 @@ const Trending = ({ isSearching, currentQuery }: Props) => {
           <>
             <ListBulletIcon width="2rem" height="2rem" />
             Search Results for "{currentQuery}"
+          </>
+        )}
+        {isFavorite && (
+          <>
+            <HeartIcon width="2rem" height="2rem" />
+            Favorite GIFs
           </>
         )}
       </h2>
@@ -48,19 +65,29 @@ const Trending = ({ isSearching, currentQuery }: Props) => {
       )}
 
       {/* GIFs gallery */}
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {(isSearching ? searchResults : trending).map(
-          (giff: any, idx: number) => {
+      {targetDataList().length === 0 && (
+        <div className="empty-msg">
+          Spice things up a little my friends 🚀 ...
+        </div>
+      )}
+      {targetDataList().length > 0 && (
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {targetDataList().map((giff: any, idx: number) => {
             return (
-              <GifItem key={giff.id} order={idx} {...giff} giffItem={giff} />
+              <GifItem
+                key={giff.id}
+                order={idx}
+                isFavorite={isFavorite}
+                {...giff}
+              />
             );
-          }
-        )}
-      </Masonry>
+          })}
+        </Masonry>
+      )}
     </TrendingStyled>
   );
 };

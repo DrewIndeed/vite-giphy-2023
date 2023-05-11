@@ -1,6 +1,13 @@
-import { GET_RANDOM, GET_SEARCH, GET_TRENDING, LOADING } from "./action";
+import {
+  ADD_TO_FAVORITES,
+  GET_FAVORITES,
+  GET_RANDOM,
+  GET_SEARCH,
+  GET_TRENDING,
+  LOADING,
+} from "./action";
 
-export const globalReducer = (state: {}, action: any) => {
+export const globalReducer = (state: any, action: any) => {
   switch (action.type) {
     case LOADING:
       return { ...state, loading: true };
@@ -24,6 +31,18 @@ export const globalReducer = (state: {}, action: any) => {
         ...state,
         loading: false,
         searchResults: action.payload,
+      };
+
+    case ADD_TO_FAVORITES:
+      return {
+        ...state,
+        favorites: [...state.favorites, action.payload],
+      };
+
+    case GET_FAVORITES:
+      return {
+        ...state,
+        favorites: action.payload,
       };
 
     default:

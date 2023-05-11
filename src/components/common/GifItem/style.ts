@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-export const GiftItemStyled = styled.div`
+export const GifItemStyled = styled.div`
   .gif {
     position: relative;
 
     img {
       width: 100%;
-      border-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border: 1px solid #00e6cc50;
+      border-top: none;
     }
 
     .love {
@@ -30,12 +33,14 @@ export const GiftItemStyled = styled.div`
 
     .loading-holder {
       width: 100%;
-      height: 25rem;
+      padding: 1rem 0 2rem 0;
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 0.3rem;
-      border: 1px solid #a6a6a650;
+      border: 1px solid #00e6cc50;
+      border-bottom: none;
+      transform: translateY(20px);
     }
 
     .random-loading-holder {
