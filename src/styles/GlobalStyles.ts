@@ -20,7 +20,7 @@ export const GlobalStyles = createGlobalStyle`
 
         /* to customize scrollbar */
         ::-webkit-scrollbar{
-            width: 7px;
+            width: 0.4rem;
         }
         ::-webkit-scrollbar-track{
             background: #252525;

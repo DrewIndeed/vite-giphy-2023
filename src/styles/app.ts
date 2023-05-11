@@ -14,4 +14,11 @@ export const AppStyled = styled.div`
     margin-top: 4rem;
     margin-bottom: 2rem;
   }
+
+  main {
+    padding: 2rem 8rem;
+    @media screen and (max-width: 1300px) {
+      padding: 2rem 4rem;
+    }
+  }
 `;

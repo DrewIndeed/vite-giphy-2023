@@ -1,15 +1,18 @@
 import Header from "@components/Header";
+import Trending from "@components/Trending";
 import Button from "@components/common/Button";
 import { useTheme } from "@context/themeContext";
 import {
-  HeartIcon,
-  ArrowTrendingUpIcon,
   ArrowPathIcon,
+  ArrowTrendingUpIcon,
+  HeartIcon,
 } from "@heroicons/react/24/solid";
 import { AppStyled } from "@styles/app";
+import "react-tooltip/dist/react-tooltip.css";
 
 const App = () => {
   const theme = useTheme();
+
   return (
     <AppStyled theme={theme}>
       <Header />
@@ -27,6 +30,10 @@ const App = () => {
           icon={<ArrowPathIcon width="1.5rem" height="1.5rem" />}
         />
       </div>
+
+      <main>
+        <Trending />
+      </main>
     </AppStyled>
   );
 };

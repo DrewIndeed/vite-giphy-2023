@@ -1,14 +1,17 @@
+import { DataProvider } from "@context/dataContext";
+import { ThemeProvider } from "@context/themeContext";
+import { GlobalStyles } from "@styles/GlobalStyles";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { GlobalStyles } from "@styles/GlobalStyles";
-import { ThemeProvider } from "@context/themeContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <GlobalStyles />
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
+    <DataProvider>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </DataProvider>
   </React.StrictMode>
 );
