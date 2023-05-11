@@ -50,14 +50,15 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
         const sh = scrollDemo?.scrollHeight as number;
         const st = Math.floor(scrollDemo?.scrollTop as number);
         const ch = scrollDemo?.clientHeight;
+        console.log({ sh, st, ch });
 
         // formula to detect bottom found by myself
-        if (sh - st - 2 === ch || sh - st - 1 === ch || sh - st === ch) {
+        if (sh - st === ch || sh - st - 1 === ch || sh - st - 2 === ch) {
           // update offset to avoid duplicate data and get new GIFs
           offset += 10;
           getMoreTrending(offset);
         }
-      }, 500);
+      }, 200);
 
       // add scroll event listener on GIFs gallery
       scrollDemo?.addEventListener("scroll", handleScroll);
