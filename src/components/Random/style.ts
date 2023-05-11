@@ -9,7 +9,7 @@ export const RandomStyled = styled.article`
     min-width: 18vw;
     max-width: 35vw;
     min-height: 35rem;
-    max-height: 40rem;
+    max-height: 37rem;
   }
 
   display: flex;
