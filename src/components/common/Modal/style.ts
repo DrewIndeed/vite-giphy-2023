@@ -32,8 +32,6 @@ export const ModalStyled = styled.div`
 
     .loading-holder {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
     }
 
     .modal-content {
@@ -55,6 +53,7 @@ export const ModalStyled = styled.div`
       }
 
       .text-content {
+        padding: 0 2rem;
         h3 {
           font-size: 1.6rem;
           text-align: center;
@@ -74,13 +73,14 @@ export const ModalStyled = styled.div`
         }
 
         h4 {
-          color: #fff;
+          color: ${(props) => props.theme.colorYellow};
+          font-size: 1.6rem;
           span {
             text-transform: uppercase;
           }
           border-bottom: 1px solid ${(props) => props.theme.colorWhite};
           padding-bottom: 0.5rem;
-          margin-bottom: 2rem;
+          margin-bottom: 1rem;
           margin-top: 2rem;
         }
 
@@ -112,7 +112,7 @@ export const ModalStyled = styled.div`
         }
 
         .giffy {
-          border-bottom: 1px solid ${(props) => props.theme.colorWhite};
+          /* border-bottom: 1px solid ${(props) => props.theme.colorWhite}; */
           padding-bottom: 0.5rem;
           margin-bottom: 2rem;
         }

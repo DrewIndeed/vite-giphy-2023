@@ -12,9 +12,7 @@ const GiftItem = (props: any) => {
     id,
     order,
     title,
-    rating,
-    embed_url,
-    rendered,
+    isRandom,
     url: link,
     username,
     user,
@@ -62,10 +60,15 @@ const GiftItem = (props: any) => {
         )}
 
         {/* placeholder when the GIF is loading */}
-        {isLoading && (
+        {isLoading && !isRandom && (
           <div className="loading-holder">
             <Loader />
           </div>
+        )}
+        {isLoading && isRandom && (
+          <p className="random-loading-holder">
+            Still loading, almost there...
+          </p>
         )}
 
         <LazyLoadImage

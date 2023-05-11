@@ -37,5 +37,10 @@ export const GiftItemStyled = styled.div`
       border-radius: 0.3rem;
       border: 1px solid #a6a6a650;
     }
+
+    .random-loading-holder {
+      color: #fff;
+      margin-bottom: 1rem;
+    }
   }
 `;

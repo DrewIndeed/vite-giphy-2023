@@ -1,4 +1,4 @@
-import { GET_TRENDING, LOADING } from "@state/action";
+import { GET_RANDOM, GET_TRENDING, LOADING } from "@state/action";
 import { globalReducer } from "@state/reducer";
 import axios, { AxiosError } from "axios";
 import {
@@ -52,15 +52,39 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  // [GET]: 1 random GIF
+  const getRandom = async () => {
+    // if trending is already populated
+    if (Object.keys(initialState.random).length > 0) return;
+
+    // loading is true
+    dispatch({ type: LOADING });
+
+    // start fetching
+    try {
+      // fetch using axios
+      const res = await axios.get(`${baseUrl}/random?api_key=${apiKey}`);
+
+      // save data into context
+      dispatch({ type: GET_RANDOM, payload: res.data.data });
+    } catch (error) {
+      let errorMessage = "Failed to get random GIF";
+      if (error instanceof AxiosError) errorMessage = error.message;
+      console.log(errorMessage);
+    }
+  };
+
   // initial data populating
   useEffect(() => {
     getTrending();
+    getRandom();
   }, []);
 
   return (
     <DataContext.Provider
       value={{
         ...state,
+        getRandom,
       }}
     >
       {children}

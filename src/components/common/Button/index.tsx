@@ -5,7 +5,7 @@ import { useTheme } from "@context/themeContext";
 type Props = {
   name: string;
   icon: ReactNode;
-  onClick?: () => {};
+  onClick?: () => void;
 };
 
 const Button = ({ name, icon, onClick }: Props) => {
