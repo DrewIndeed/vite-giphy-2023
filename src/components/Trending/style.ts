@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const TrendingStyled = styled.article`
   position: relative;
   padding: 2rem;
+  margin-top: 1rem;
   background-color: ${(props) => props.theme.colorBg2};
   border-radius: 1rem;
   height: 62vh;
