@@ -10,7 +10,6 @@ import {
 import Masonry from "react-masonry-css";
 import { TrendingStyled } from "./style";
 
-
 type Props = {
   isSearching?: boolean;
   isFavorite?: boolean;
@@ -60,13 +59,13 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
 
       {/* loader of the current content */}
       {loading && (
-        <div style={{ marginTop: "12rem" }}>
+        <div style={{ marginTop: "15%" }}>
           <Loader />
         </div>
       )}
 
       {/* GIFs gallery */}
-      {targetDataList().length === 0 && (
+      {!loading && targetDataList().length === 0 && (
         <div className="empty-msg">
           Spice things up a little my friends 🚀 ...
         </div>

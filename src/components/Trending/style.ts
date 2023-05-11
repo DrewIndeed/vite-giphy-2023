@@ -6,6 +6,7 @@ export const TrendingStyled = styled.article`
   border-radius: 1rem;
   height: 70vh;
   overflow: auto;
+  padding-bottom: 4rem;
 
   h2 {
     font-size: 2rem;

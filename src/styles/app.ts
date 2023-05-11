@@ -12,8 +12,7 @@ export const AppStyled = styled.div`
     @media screen and (max-width: 768px) {
       gap: 2rem;
     }
-    margin-top: 4rem;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
   }
 
   main {
