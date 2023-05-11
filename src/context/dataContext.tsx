@@ -19,7 +19,7 @@ import { toast } from "react-toastify";
 
 // APIs info
 const apiKey = import.meta.env.VITE_APP_API_KEY;
-const baseUrl = "https://api.giphy.com/v1/gifs";
+const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
 const initialState = {
   loading: false, // api loading state
@@ -165,7 +165,6 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
   // initial data populating
   useEffect(() => {
     getTrending();
-    getRandom();
     getFromLocalStorage();
   }, []);
 

@@ -10,6 +10,7 @@ export const GifItemStyled = styled.div`
       border-bottom-right-radius: 5px;
       border: 1px solid #00e6cc50;
       border-top: none;
+      border-bottom: none;
     }
 
     .love {
@@ -25,7 +26,7 @@ export const GifItemStyled = styled.div`
     }
 
     .username {
-      color: #fff;
+      color: #00e6cc;
       position: absolute;
       bottom: 1rem;
       left: 1rem;

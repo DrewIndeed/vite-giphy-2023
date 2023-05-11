@@ -95,15 +95,18 @@ const GifItem = (props: any) => {
         )}
 
         {/* username preview at the bottom left corners if exists */}
-        {!isLoading && (
-          <a
-            target="_blank"
-            className="username"
-            href={user?.profile_url || user?.website_url || ""}
-          >
-            {username && `@${username}`}
-          </a>
-        )}
+        {!isLoading &&
+          (username ? (
+            <a
+              target="_blank"
+              className="username"
+              href={user?.profile_url || user?.website_url || ""}
+            >
+              @{username}
+            </a>
+          ) : (
+            <p className="username">No Username</p>
+          ))}
 
         {/* placeholder when the GIF is loading */}
         {isLoading && !isRandom && (
