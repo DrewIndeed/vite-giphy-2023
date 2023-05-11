@@ -15,6 +15,7 @@ import {
   useEffect,
   useReducer,
 } from "react";
+import { toast } from "react-toastify";
 
 // APIs info
 const apiKey = import.meta.env.VITE_APP_API_KEY;
@@ -119,7 +120,8 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     // if there is  data with the same id
     // then, notify and stop adding process
     if (existingItem) {
-      alert("Opps! Already Added!"); // notify here
+      // notify here
+      toast.error("Opps! Already Added!");
       return;
     }
 
@@ -129,7 +131,8 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     // save to local storage
     window.localStorage.setItem("myFavoriteGifs", JSON.stringify(items));
     dispatch({ type: ADD_TO_FAVORITES, payload: gifData });
-    alert("Yayy! Added to Favorites!!"); // notify here
+    // notify here
+    toast.success("Yayy! Added to Favorties!");
   };
 
   // [LOCAL STORAGE]: check and get stored favorite items
@@ -154,6 +157,9 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
 
     // get favorites list again for updated data
     getFromLocalStorage();
+
+    // notify here
+    toast.success("Remove from Favorties!");
   };
 
   // initial data populating

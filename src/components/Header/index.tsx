@@ -3,6 +3,7 @@ import { useTheme } from "@context/themeContext";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { HeaderStyled } from "./style";
 
 type Props = {
@@ -25,6 +26,9 @@ const Header = ({ setRenderedCategory, setCurrentQuery }: Props) => {
 
     // if query is empty wehen submit, show Trending GIFs
     if (query === "") setRenderedCategory("trending");
+
+    // notify here
+    toast.success("Here what we found!");
   };
 
   // handle search bar content changing

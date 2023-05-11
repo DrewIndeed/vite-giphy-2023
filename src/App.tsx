@@ -12,6 +12,8 @@ import {
 import { AppStyled } from "@styles/app";
 import type { ReactNode } from "react";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "react-tooltip/dist/react-tooltip.css";
 
 const App = () => {
@@ -61,6 +63,13 @@ const App = () => {
 
       {/* main content display */}
       <main>{categoriesContentMap[renderedCategory]}</main>
+
+      {/* for toasting messages */}
+      <ToastContainer
+        autoClose={3000}
+        theme="colored"
+        position="bottom-center"
+      />
     </AppStyled>
   );
 };

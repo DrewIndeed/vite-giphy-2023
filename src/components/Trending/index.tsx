@@ -10,6 +10,7 @@ import {
 import Masonry from "react-masonry-css";
 import { TrendingStyled } from "./style";
 
+
 type Props = {
   isSearching?: boolean;
   isFavorite?: boolean;
