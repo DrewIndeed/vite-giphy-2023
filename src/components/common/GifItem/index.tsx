@@ -63,6 +63,8 @@ const GifItem = (props: any) => {
               const targetDataForProcessing = {
                 id,
                 title,
+                user,
+                username,
                 url: link,
                 images: {
                   original: { url: originUrl },
