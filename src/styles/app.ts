@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const AppStyled = styled.div`
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   background-color: ${(props) => props.theme.colorBg1};
 
   .category-btns {

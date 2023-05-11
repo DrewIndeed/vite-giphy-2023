@@ -29,7 +29,6 @@ export const GiftItemStyled = styled.div`
     }
 
     .loading-holder {
-      font-size: 2em;
       width: 100%;
       height: 25rem;
       display: flex;
