@@ -14,11 +14,10 @@ const Modal = (props: any) => {
     title,
     rating,
     embed_url,
-    rendered,
     url: link,
-    username,
     images: {
-      original: { url },
+      fixed_height_downsampled: { url },
+      downsized: { url: downsampledUrl },
     },
     setModalOn,
   } = props;
@@ -39,7 +38,7 @@ const Modal = (props: any) => {
         <div className="modal-content">
           <LazyLoadImage
             afterLoad={() => setIsLoading(false)}
-            src={url}
+            src={downsampledUrl}
             alt={title}
             loading="lazy"
             threshold={500}

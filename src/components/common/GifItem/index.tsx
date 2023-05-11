@@ -1,3 +1,4 @@
+import { useData } from "@context/dataContext";
 import { useTheme } from "@context/themeContext";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/24/solid";
@@ -7,7 +8,6 @@ import { Tooltip } from "react-tooltip";
 import Loader from "../Loader";
 import Modal from "../Modal";
 import { GifItemStyled } from "./style";
-import { useData } from "@context/dataContext";
 
 const GifItem = (props: any) => {
   const {
@@ -19,7 +19,9 @@ const GifItem = (props: any) => {
     username,
     user,
     images: {
-      original: { url },
+      original: { url: originUrl },
+      fixed_height_downsampled: { url },
+      downsized: { url: downsampledUrl },
     },
     isFavorite,
   } = props;
@@ -40,6 +42,17 @@ const GifItem = (props: any) => {
         data-tooltip-place="bottom"
         onDoubleClick={() => setModalOn(true)}
       >
+        <LazyLoadImage
+          afterLoad={() => setIsLoading(false)}
+          src={isRandom ? originUrl : url}
+          alt={title}
+          threshold={2000}
+          effect="opacity"
+          useIntersectionObserver={false}
+          // visibleByDefault={order >= 0 && order <= 7}
+          visibleByDefault
+        />
+
         {/* button to add to Favorties */}
         {!isLoading && (
           <div
@@ -50,7 +63,8 @@ const GifItem = (props: any) => {
                 title,
                 url: link,
                 images: {
-                  original: { url },
+                  fixed_height_downsampled: { url },
+                  downsized: { url: downsampledUrl },
                 },
               };
 
@@ -98,16 +112,6 @@ const GifItem = (props: any) => {
             Still loading, almost there...
           </p>
         )}
-
-        <LazyLoadImage
-          afterLoad={() => setIsLoading(false)}
-          src={url}
-          alt={title}
-          loading="lazy"
-          threshold={500}
-          useIntersectionObserver={false}
-          visibleByDefault={order >= 0 && order <= 7}
-        />
       </div>
     </GifItemStyled>
   );

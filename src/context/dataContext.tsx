@@ -112,7 +112,7 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     const storedItems =
       JSON.parse(window.localStorage.getItem("myFavoriteGifs") as string) || [];
 
-    // find in the list in local storage for the same data uisng id
+    // find in the list in local storage for the same data using id
     const existingItem = storedItems.find(
       (item: any) => item.id === gifData.id
     );
@@ -159,7 +159,7 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     getFromLocalStorage();
 
     // notify here
-    toast.success("Remove from Favorties!");
+    toast.success("Removed from Favorties!");
   };
 
   // initial data populating
