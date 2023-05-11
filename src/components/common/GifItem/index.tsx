@@ -27,6 +27,8 @@ const GifItem = (props: any) => {
   } = props;
   const { saveToFavorites, removeFromFavorites } = useData();
   const theme = useTheme();
+
+  // statess
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOn, setModalOn] = useState(false);
 
@@ -42,6 +44,7 @@ const GifItem = (props: any) => {
         data-tooltip-place="bottom"
         onDoubleClick={() => setModalOn(true)}
       >
+        {/* GIFs item image content */}
         <LazyLoadImage
           afterLoad={() => setIsLoading(false)}
           src={isRandom ? originUrl : url}
@@ -53,7 +56,7 @@ const GifItem = (props: any) => {
           visibleByDefault
         />
 
-        {/* button to add to Favorties */}
+        {/* button to add to or remove from Favorties */}
         {!isLoading && (
           <div
             className="love"
@@ -63,6 +66,7 @@ const GifItem = (props: any) => {
                 title,
                 url: link,
                 images: {
+                  original: { url: originUrl },
                   fixed_height_downsampled: { url },
                   downsized: { url: downsampledUrl },
                 },
@@ -90,7 +94,7 @@ const GifItem = (props: any) => {
           </div>
         )}
 
-        {/* username preiew at the bottom left corners */}
+        {/* username preview at the bottom left corners if exists */}
         {!isLoading && (
           <a
             target="_blank"

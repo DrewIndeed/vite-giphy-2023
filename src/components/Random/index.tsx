@@ -11,10 +11,13 @@ const Random = () => {
 
   return (
     <RandomStyled theme={theme}>
+      {/* title */}
       <h2>
         <ArrowPathIcon width="2rem" height="2rem" />
         Random GIF
       </h2>
+
+      {/* random gifyt display */}
       {loading ? <Loader /> : <GiftItem {...randomGifData} isRandom />}
     </RandomStyled>
   );

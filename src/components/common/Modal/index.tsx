@@ -16,6 +16,7 @@ const Modal = (props: any) => {
     embed_url,
     url: link,
     images: {
+      original: { url: originUrl },
       fixed_height_downsampled: { url },
       downsized: { url: downsampledUrl },
     },
@@ -36,6 +37,7 @@ const Modal = (props: any) => {
         )}
 
         <div className="modal-content">
+          {/* GIF image content */}
           <LazyLoadImage
             afterLoad={() => setIsLoading(false)}
             src={downsampledUrl}
@@ -45,13 +47,17 @@ const Modal = (props: any) => {
             className="giff"
             useIntersectionObserver={false}
           />
+
+          {/* GIFs information */}
           {!isLoading && (
             <div className="text-content">
+              {/* main title */}
               <h3>{title}</h3>
+              {/* rating as reqiured */}
               <h4>
                 <span>{rating}</span> RATING
               </h4>
-
+              {/* share button -> lead to GIPHY */}
               <div className="share-item share">
                 <a href={link} target={"_blank"}>
                   <PaperAirplaneIcon
@@ -63,6 +69,7 @@ const Modal = (props: any) => {
                 </a>
               </div>
 
+              {/* Code button -> lead to site from embeded link */}
               <div className="share-item embed">
                 <a href={embed_url} target="_blank">
                   <CodeBracketIcon
@@ -73,7 +80,7 @@ const Modal = (props: any) => {
                   <span>Embed</span>
                 </a>
               </div>
-
+              {/* GIPHY button -> lead to GIPHY */}
               <div className="share-item giffy">
                 <a href={link} target="_blank">
                   <GifIcon width="2.5rem" height="2.5rem" color="#fff" />
@@ -84,6 +91,8 @@ const Modal = (props: any) => {
           )}
         </div>
       </div>
+
+      {/* blur overlay when modal is on */}
       <div className="overlay" onClick={() => setModalOn(false)} />
     </ModalStyled>
   );

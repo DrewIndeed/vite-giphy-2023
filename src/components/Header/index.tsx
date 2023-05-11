@@ -20,7 +20,7 @@ const Header = ({ setRenderedCategory, setCurrentQuery }: Props) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     getSearchResults(query);
-    setCurrentQuery(query);
+    setCurrentQuery(query); // to show query as "Search Results of 'something'"
     setRenderedCategory("searching");
     setQuery("");
 

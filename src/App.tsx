@@ -44,16 +44,19 @@ const App = () => {
         <Button
           name="Favorite GIFs"
           icon={<HeartIcon width="1.5rem" height="1.5rem" />}
+          isChosen={renderedCategory === "favorites"}
           onClick={() => setRenderedCategory("favorites")}
         />
         <Button
           name="Trending GIFs"
           icon={<ArrowTrendingUpIcon width="1.5rem" height="1.5rem" />}
+          isChosen={renderedCategory === "trending"}
           onClick={() => setRenderedCategory("trending")}
         />
         <Button
           name="Random GIF"
           icon={<ArrowPathIcon width="1.5rem" height="1.5rem" />}
+          isChosen={renderedCategory === "random"}
           onClick={() => {
             getRandom();
             setRenderedCategory("random");

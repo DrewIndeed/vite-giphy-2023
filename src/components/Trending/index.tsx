@@ -16,6 +16,7 @@ type Props = {
   currentQuery?: string;
 };
 const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
+  // data from context
   const { trending, loading, searchResults, favorites } = useData();
   const theme = useTheme();
 
@@ -64,12 +65,14 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
         </div>
       )}
 
-      {/* GIFs gallery */}
+      {/* if data list is empty */}
       {!loading && targetDataList().length === 0 && (
         <div className="empty-msg">
           Spice things up a little my friends 🚀 ...
         </div>
       )}
+
+      {/* GIFs gallery */}
       {targetDataList().length > 0 && (
         <Masonry
           breakpointCols={breakpointColumnsObj}
