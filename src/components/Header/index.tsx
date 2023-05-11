@@ -1,9 +1,36 @@
+import { useData } from "@context/dataContext";
 import { useTheme } from "@context/themeContext";
-import { HeaderStyled } from "./style";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import type { Dispatch, SetStateAction } from "react";
+import { useState } from "react";
+import { HeaderStyled } from "./style";
 
-function Header() {
+type Props = {
+  setRenderedCategory: Dispatch<SetStateAction<string>>;
+  setCurrentQuery: Dispatch<SetStateAction<string>>;
+};
+
+const Header = ({ setRenderedCategory, setCurrentQuery }: Props) => {
+  const { getSearchResults } = useData();
   const theme = useTheme();
+  const [query, setQuery] = useState<string>("");
+
+  // handle submit search query
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    getSearchResults(query);
+    setCurrentQuery(query);
+    setRenderedCategory("searching");
+    setQuery("");
+
+    // if query is empty wehen submit, show Trending GIFs
+    if (query === "") setRenderedCategory("trending");
+  };
+
+  // handle search bar content changing
+  const handleChange = (e: any) => {
+    setQuery(e.target.value);
+  };
 
   return (
     <HeaderStyled theme={theme}>
@@ -29,11 +56,13 @@ function Header() {
         </svg>
       </a>
 
-      <form action="" id="search-bar-form">
+      <form action="" id="search-bar-form" onSubmit={handleSubmit}>
         {/* Search bar */}
         <div className="input-control">
           <input
             type="text"
+            value={query}
+            onChange={handleChange}
             className="search-text-input"
             placeholder="Search for all GIFs ..."
           />
@@ -44,6 +73,6 @@ function Header() {
       </form>
     </HeaderStyled>
   );
-}
+};
 
 export default Header;

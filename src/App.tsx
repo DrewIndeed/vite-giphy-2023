@@ -17,16 +17,24 @@ import "react-tooltip/dist/react-tooltip.css";
 const App = () => {
   const { getRandom } = useData();
   const theme = useTheme();
+
+  // states
   const [renderedCategory, setRenderedCategory] = useState<string>("trending");
+  const [currentQuery, setCurrentQuery] = useState<string>("");
+
+  // map to choose what content to render on the main screen
   const categoriesContentMap: Record<string, ReactNode> = {
     trending: <Trending />,
     random: <Random />,
-    favorite: <div>Liked</div>,
+    searching: <Trending isSearching currentQuery={currentQuery} />,
   };
 
   return (
     <AppStyled theme={theme}>
-      <Header />
+      {/* header section with search bar */}
+      <Header {...{ setCurrentQuery, setRenderedCategory }} />
+
+      {/* list of buttons */}
       <div className="category-btns">
         <Button
           name="Liked GIFs"
@@ -48,6 +56,7 @@ const App = () => {
         />
       </div>
 
+      {/* main content display */}
       <main>{categoriesContentMap[renderedCategory]}</main>
     </AppStyled>
   );

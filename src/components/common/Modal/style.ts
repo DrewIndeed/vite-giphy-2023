@@ -37,6 +37,7 @@ export const ModalStyled = styled.div`
     .modal-content {
       padding: 2rem;
       display: flex;
+      align-items: center;
       gap: 2rem;
       @media screen and (max-width: 1400px) {
         flex-direction: column;
