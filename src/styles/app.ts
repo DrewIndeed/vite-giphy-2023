@@ -16,7 +16,7 @@ export const AppStyled = styled.div`
   }
 
   main {
-    padding: 2rem 8rem;
+    padding: 1rem 8rem;
     @media screen and (max-width: 1300px) {
       padding: 2rem 4rem;
     }

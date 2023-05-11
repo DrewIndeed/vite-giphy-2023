@@ -5,7 +5,7 @@ export const TrendingStyled = styled.article`
   padding: 2rem;
   background-color: ${(props) => props.theme.colorBg2};
   border-radius: 1rem;
-  height: 65vh;
+  height: 62vh;
   overflow: auto;
   padding-bottom: 4rem;
 
