@@ -97,7 +97,7 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
           style={{
             position: "absolute",
             zIndex: "20",
-            top: "1rem",
+            bottom: "1rem",
             right: "1rem",
           }}
         >
