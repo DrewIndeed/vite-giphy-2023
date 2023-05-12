@@ -50,7 +50,6 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
         const sh = scrollDemo?.scrollHeight as number;
         const st = Math.floor(scrollDemo?.scrollTop as number);
         const ch = scrollDemo?.clientHeight;
-        console.log("OUTISDE", { sh, st, ch });
 
         // formula to detect SCROLL BOTTOM, found by myself
         if (
@@ -62,15 +61,6 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
           sh - st + 1 === ch ||
           sh - st + 2 === ch
         ) {
-          console.log("DETECTED", { sh, st, ch });
-
-          // [RESOLVE BUG]: offset at 20 stops fetching more
-          if (offset === 20) {
-            setTimeout(() => {
-              scrollDemo?.scrollTo({ top: st - ch, behavior: "smooth" });
-            }, 400);
-          }
-
           // update offset to avoid duplicate data and get new GIFs
           offset += 10;
           getMoreTrending(offset);
