@@ -25,7 +25,6 @@ export const RandomStyled = styled.article`
   );
 
   h2 {
-    z-index: 40;;
     display: flex;
     justify-content: center;
     align-items: center;

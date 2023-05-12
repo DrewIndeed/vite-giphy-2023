@@ -57,9 +57,16 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
           // update offset to avoid duplicate data and get new GIFs
           offset += 10;
           getMoreTrending(offset);
+
           setTimeout(() => {
             scrollDemo?.scrollTo(0, st - 200);
-          }, 1000);
+          }, 500);
+
+          if (offset === 30) {
+            setTimeout(() => {
+              scrollDemo?.scrollTo(0, st - 500);
+            }, 500);
+          }
         }
       }, 200);
 
