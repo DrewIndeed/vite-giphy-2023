@@ -62,7 +62,7 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
             scrollDemo?.scrollTo(0, st - 200);
           }, 500);
 
-          if (offset === 30) {
+          if (offset === 20) {
             setTimeout(() => {
               scrollDemo?.scrollTo(0, st - 500);
             }, 500);
