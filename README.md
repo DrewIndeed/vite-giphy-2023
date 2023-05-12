@@ -1,6 +1,6 @@
 # My GIPHY Gallery 🥇
 
-My GIPHY Gallery is a Senior Frontend Engineer take-home coding challenge from PI.EXCHANGE. It is a website build with Vite + TypeScript that utilized GIPHY GIFs APIs to get random GIFs, trending GIFs, search functionality and save to Favorites. You can explore the deployment <a href="https://vite-giphy-2023-5s83zvghj-lnta.vercel.app/" target="_blank">HERE!</a>
+My GIPHY Gallery is a Senior Frontend Engineer take-home coding challenge from PI.EXCHANGE. It is a website build with Vite + TypeScript that utilized GIPHY GIFs APIs to get random GIFs, trending GIFs, search functionality and save to Favorites. You can explore the deployment <a href="https://vite-giphy-2023-nzx93998v-lnta.vercel.app/" target="_blank">HERE!</a>
 
 ## Installation, Compilation and Execution
 
