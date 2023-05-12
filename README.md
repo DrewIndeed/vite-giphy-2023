@@ -1,6 +1,6 @@
 # My GIPHY Gallery 🥇
 
-My GIPHY Gallery is a Senior Frontend Engineer take-home coding challenge from PI.EXCHANGE. It is a website build with Vite + TypeScript that utilized GIPHY GIFs APIs to get random GIFs, trending GIFs, search functionality and save to Favorites. You can explore the deployment <a href="https://vite-giphy-2023-13ozl1to0-lnta.vercel.app/" target="_blank">HERE!</a>
+My GIPHY Gallery is a Senior Frontend Engineer take-home coding challenge from PI.EXCHANGE. It is a website build with Vite + TypeScript that utilized GIPHY GIFs APIs to get random GIFs, trending GIFs, search functionality and save to Favorites. You can explore the deployment <a href="https://vite-giphy-2023-5s83zvghj-lnta.vercel.app/" target="_blank">HERE!</a>
 
 ## Installation, Compilation and Execution
 
@@ -101,6 +101,9 @@ yarn build && yarn preview
 - Due to the small scope of THIS project, I don't want to use a third party library such as Redux or MobX to handle state management to save project size and bundle.
 - Instead, I implemented a simple store-reducer-action structure using `useReducer and useContext`, kinda similar to the classic Redux, to handle API calls and global data flow.
 - However, if scalability is reqiured, I would make the transition of course.
+
+### About Searching functionality
+- Currently, the number of results is fixed as 30 items with no Infinite Scrolling.
 
 ### About GIPHY API Beta Key
 
