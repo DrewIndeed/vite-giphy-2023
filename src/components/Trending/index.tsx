@@ -34,9 +34,16 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
   };
 
   const targetDataList = () => {
+    const currentIds: Record<string, number> = {};
     if (isSearching && !isFavorite) return searchResults;
     if (isFavorite && !isSearching) return favorites;
-    return trending;
+    return trending
+      .map((item: any) => {
+        if (!(item.id in currentIds)) currentIds[item.id] = 1;
+        else currentIds[item.id] = currentIds[item.id] + 1;
+        return item;
+      })
+      .filter((item: any) => currentIds[item.id] === 1);
   };
 
   useEffect(() => {
