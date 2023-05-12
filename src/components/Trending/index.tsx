@@ -53,7 +53,15 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
         console.log("OUTISDE", { sh, st, ch });
 
         // formula to detect SCROLL BOTTOM, found by myself
-        if (sh - st === ch || sh - st - 1 === ch || sh - st - 2 === ch) {
+        if (
+          // equals case
+          sh - st === ch ||
+          // other differences, boundary will be +- 2
+          sh - st - 1 === ch ||
+          sh - st - 2 === ch ||
+          sh - st + 1 === ch ||
+          sh - st + 2 === ch
+        ) {
           console.log("DETECTED", { sh, st, ch });
 
           // [RESOLVE BUG]: offset at 20 stops fetching more
