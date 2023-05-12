@@ -17,6 +17,7 @@ const GifItem = (props: any) => {
     url: link,
     username,
     user,
+    rating,
     images: {
       original: { url: originUrl },
       fixed_height_downsampled: { url },
@@ -63,6 +64,7 @@ const GifItem = (props: any) => {
               const targetDataForProcessing = {
                 id,
                 title,
+                rating,
                 user,
                 username,
                 url: link,
