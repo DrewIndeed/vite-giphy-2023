@@ -4,6 +4,7 @@ export const RandomStyled = styled.article`
   position: relative;
   margin: 3rem auto;
   border-radius: 0.4rem;
+  overflow: auto;
 
   @media screen and (min-width: 1400px) {
     min-width: 18vw;
