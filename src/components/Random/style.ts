@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const RandomStyled = styled.article`
   position: relative;
-  margin: 3% auto;
+  margin: 3rem auto;
   border-radius: 0.4rem;
 
   @media screen and (min-width: 1400px) {
     min-width: 18vw;
     max-width: 35vw;
     min-height: 35rem;
-    max-height: 37rem;
+    max-height: 38rem;
   }
 
   display: flex;
@@ -25,13 +25,14 @@ export const RandomStyled = styled.article`
   );
 
   h2 {
+    z-index: 40;;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     gap: 1rem;
-    top: 2rem;
-    left: 2rem;
+    top: 1rem;
+    left: 1rem;
     color: #fff;
     font-size: 2rem;
   }
