@@ -56,7 +56,7 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
           // [RESOLVE BUG]: offset at 20 stops fetching more
           if (offset === 20) {
             setTimeout(() => {
-              scrollDemo?.scrollTo(0, st - ch);
+              scrollDemo?.scrollTo({ top: st - ch, behavior: "smooth" });
             }, 400);
           }
 
@@ -66,7 +66,7 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
 
           // scroll back to top a little
           setTimeout(() => {
-            scrollDemo?.scrollTo(0, st - 200);
+            scrollDemo?.scrollTo({ top: st - 200, behavior: "smooth" });
           }, 400);
         }
       }, 200);
