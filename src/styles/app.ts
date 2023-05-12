@@ -17,5 +17,6 @@ export const AppStyled = styled.div`
 
   main {
     padding-inline: 4rem;
+    overflow: auto;
   }
 `;
