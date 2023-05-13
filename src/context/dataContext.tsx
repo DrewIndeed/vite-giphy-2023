@@ -49,7 +49,7 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     try {
       // fetch using axios
       const res = await axios.get(
-        `${baseUrl}/trending?api_key=${apiKey}&limit=10&offset=0`
+        `${baseUrl}/trending?api_key=${apiKey}&limit=12&offset=0`
       );
 
       // save data into context
@@ -70,7 +70,7 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     try {
       // fetch using axios
       const res = await axios.get(
-        `${baseUrl}/trending?api_key=${apiKey}&limit=10&offset=${newOffset}`
+        `${baseUrl}/trending?api_key=${apiKey}&limit=12&offset=${newOffset}`
       );
 
       // save data into context

@@ -149,6 +149,7 @@ Apply for production access (see “How do I upgrade my beta key”)
 - I would add functionality to share on social media or send to a friend
 - I would add sorting functionalities by a few attributes such as uploaded time, title, ...
 - I would add upload functionalities
+- I would add scroll to top functionalities
 
 ## License
 
