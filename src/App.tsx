@@ -34,6 +34,23 @@ const App = () => {
     ),
   };
 
+  // button click handlers
+  const handleFavoriteClick = () => {
+    setRenderedCategory("favorites");
+    const scrollDemo = document.querySelector("#gallery-scroll");
+    scrollDemo?.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const handleTrendingClick = () => {
+    setRenderedCategory("trending");
+    getTrending();
+    const scrollDemo = document.querySelector("#gallery-scroll");
+    scrollDemo?.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const handleRandomClick = () => {
+    getRandom();
+    setRenderedCategory("random");
+  };
+
   return (
     <AppStyled theme={theme}>
       {/* header section with search bar */}
@@ -45,27 +62,19 @@ const App = () => {
           name="Favorite GIFs"
           icon={<HeartIcon width="1.5rem" height="1.5rem" />}
           isChosen={renderedCategory === "favorites"}
-          onClick={() => setRenderedCategory("favorites")}
+          onClick={handleFavoriteClick}
         />
         <Button
           name="Trending GIFs"
           icon={<ArrowTrendingUpIcon width="1.5rem" height="1.5rem" />}
           isChosen={renderedCategory === "trending"}
-          onClick={() => {
-            setRenderedCategory("trending");
-            getTrending();
-            const scrollDemo = document.querySelector("#gallery-scroll");
-            scrollDemo?.scrollTo({ top: 0, behavior: "smooth" });
-          }}
+          onClick={handleTrendingClick}
         />
         <Button
           name="Random GIF"
           icon={<ArrowPathIcon width="1.5rem" height="1.5rem" />}
           isChosen={renderedCategory === "random"}
-          onClick={() => {
-            getRandom();
-            setRenderedCategory("random");
-          }}
+          onClick={handleRandomClick}
         />
       </div>
 

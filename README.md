@@ -105,7 +105,12 @@ yarn build && yarn preview
 - However, if scalability is reqiured, I would make the transition of course.
 
 ### About Searching functionality
+
 - Currently, the number of results is fixed as 30 items with no Infinite Scrolling.
+
+### About API error messages
+
+- Currently, any API errors will be console-logged.
 
 ### About GIPHY API Beta Key
 
@@ -136,7 +141,7 @@ Apply for production access (see “How do I upgrade my beta key”)
 
 - Sometimes, the Infinte Scroll gets frozen and does not load more items. This happens due to scrolling too fast so the margin of error when reading the scroll position gets bigger. Thus, it cannot detect the bottom of scrolling correctly.
 - This issue has been minimized using throttle.
-- If you face this issue, just REFRESH the page. 
+- If you face this issue, just REFRESH the page.
 
 ## Project Q&A
 
