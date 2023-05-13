@@ -85,7 +85,7 @@ const Trending = ({ isSearching, isFavorite, currentQuery }: Props) => {
       // clean up
       return () => scrollDemo?.removeEventListener("scroll", handleScroll);
     }
-  }, []);
+  }, [isFavorite, isSearching]);
 
   return (
     <TrendingStyled theme={theme} id="gallery-scroll">

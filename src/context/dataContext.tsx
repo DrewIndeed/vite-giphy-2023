@@ -154,7 +154,7 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     window.localStorage.setItem("myFavoriteGifs", JSON.stringify(items));
     dispatch({ type: ADD_TO_FAVORITES, payload: gifData });
     // notify here
-    toast.success("Yayy! Added to Favorties!");
+    toast.success("Yayy! Added to Favorites!");
   };
 
   // [LOCAL STORAGE]: check and get stored favorite items
