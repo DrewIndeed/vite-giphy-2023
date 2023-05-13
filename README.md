@@ -55,6 +55,14 @@ yarn build && yarn preview
 ...
 ```
 
+## Known Bugs
+
+### About Infinite Scroll
+
+- Sometimes, the Infinte Scroll gets frozen and does not load more items. This happens due to scrolling too fast so the margin of error when reading the scroll position gets bigger. Thus, it cannot detect the bottom of scrolling correctly.
+- This issue has been minimized using throttle.
+- If you face this issue, just REFRESH the page. 
+
 ## Requirements Checklist
 
 ### Functionalities fulfillment summary
