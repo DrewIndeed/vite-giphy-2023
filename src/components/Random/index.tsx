@@ -18,7 +18,15 @@ const Random = () => {
       </h2>
 
       {/* random gifyt display */}
-      {loading ? <Loader /> : <GiftItem {...randomGifData} isRandom />}
+      <div id="random-gif-container">
+        {loading ? (
+          <div className="loader-holding">
+            <Loader />
+          </div>
+        ) : (
+          <GiftItem {...randomGifData} isRansdom />
+        )}
+      </div>
     </RandomStyled>
   );
 };

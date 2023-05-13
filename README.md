@@ -60,6 +60,7 @@ yarn build && yarn preview
 ### Functionalities fulfillment summary
 
 - [x] See list of Trending GIFs
+  - [x] Click "Trending GIFs" again to regenerate the list (EXTRA)
 - [x] Search for GIFs and see list of results
 - [x] Expand a GIF and see details
   - [x] Show at least show username and rating
@@ -72,6 +73,7 @@ yarn build && yarn preview
 - [x] Basic animations
 - [x] Theme provider (EXTRA)
 - [x] Get a random GIF (EXTRA)
+  - [x] Click "Random GIF" again to generate a new one (EXTRA)
 - [x] Custom Loader (EXTRA)
 - [x] Notification / Pop ups (EXTRA)
 

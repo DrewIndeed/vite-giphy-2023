@@ -5,20 +5,20 @@ export const RandomStyled = styled.article`
   margin: 3rem auto;
   border-radius: 0.4rem;
   overflow: auto;
+  height: 35rem;
 
-  @media screen and (min-width: 1400px) {
+  @media screen and (min-width: 1100px) {
     min-width: 18vw;
-    max-width: 35vw;
-    min-height: 35rem;
-    max-height: 38rem;
+    max-width: 58vw;
   }
 
   display: flex;
   justify-content: center;
   align-items: center;
+
   background-color: ${(props) => props.theme.colorBg2};
   overflow: hidden;
-  padding: 8rem 2rem 6rem 2rem;
+  padding: 8rem 1rem;
   background: linear-gradient(
     45deg,
     ${(props) => props.theme.colorPurple2} 0%,
@@ -35,5 +35,20 @@ export const RandomStyled = styled.article`
     left: 1rem;
     color: #fff;
     font-size: 2rem;
+  }
+
+  #random-gif-container {
+    width: 100%;
+    height: 29rem;
+    margin-top: 3rem;
+    border-radius: 0.4rem;
+    overflow: auto;
+    /* border: 2px solid cyan; */
+  }
+
+  .loader-holding {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
   }
 `;
